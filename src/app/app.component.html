@@ -1,0 +1,34 @@
+<h1 style="text-align:center;">
+
+    Welcome to CSV Importer</h1>
+
+<section class="csv-file-chooser-section Hero">
+
+
+    <input class="btn" type="file" (change)="isMultipleF()" accept=".csv" (change)="onFileChange($event)" multiple="true" />
+
+    <br>
+
+
+
+    <p *ngIf="isMultiple">Cannot Import Two CSV Files</p>
+
+    <div class="csv-result-table">
+
+        <table cellSpacing="20">
+            <tbody>
+                <tr>
+                    <th *ngFor="let Header of head">
+                        {{ Header }}
+                    </th>
+                </tr>
+                <tr *ngFor="let row of data">
+                    <td *ngFor="let cell of row">
+                        {{cell}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
