@@ -20,7 +20,7 @@ export class AppComponent {
 
   data:any= [];
   head:any=[];
-
+  
 
    
 
@@ -28,9 +28,9 @@ export class AppComponent {
   onFileChange(e: any) {
     const target : any = e.target;
     
-     if (target.files.length !== 1){
 
-      this.isMultipleF();
+     if (target.files.length !== 1){
+        this.isMultipleF();
      }else{
       this.isMultiple = false;
 
@@ -44,10 +44,10 @@ export class AppComponent {
         const wsname : string = wb.SheetNames[0];
         const ws: XLSX.WorkSheet = wb.Sheets[wsname];
   
-        
+        const Excel = (XLSX.utils.sheet_to_json(ws, { header: 1 }));
   
-        this.data = (XLSX.utils.sheet_to_json(ws, { header: 1 })).slice(1);
-        this.head = (XLSX.utils.sheet_to_json(ws, { header: 1 })).at(0);
+        this.data = Excel.slice(1);
+        this.head = Excel.at(0);
 
       };
   
